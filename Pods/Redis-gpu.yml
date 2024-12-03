@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-node-selector
+  labels:
+    createtion_method: redis-manual
+    env: prod
+  namespace: custom-namespace
+spec:
+  nodeSelector:
+    gpu: "true"
+  containers:
+  - image: redis:latest
+    name: redis
+    ports:
+    - containerPort: 6379
+      protocol: TCP

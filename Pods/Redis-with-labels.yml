@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-manual-v2
+  labels:
+    createtion_method: redis-manual
+    env: prod
+spec:
+  containers:
+  - image: redis:latest
+    name: redis
+    ports:
+    - containerPort: 6379
+      protocol: TCP

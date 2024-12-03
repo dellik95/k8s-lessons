@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: kubia-v1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kubia
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      containers:
+      - name: nodejs
+        image: luksa/kubia:v1
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: kubia
+spec:
+  selector:
+    app: kubia
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080

@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  creationTimestamp: "2024-01-24T21:14:40Z"
+  generation: 1
+  name: kubia
+  namespace: default
+  resourceVersion: "367177"
+  uid: 18b5aef6-1374-4676-816a-c0ce8933a4ac
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: kubia.example.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: kubia-nodeport
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer:
+    ingress:
+    - ip: 192.168.49.2
